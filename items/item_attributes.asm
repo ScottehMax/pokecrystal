@@ -735,6 +735,9 @@ Item2Attributes:
 ; TM50
 	item_attribute  2000, 0,                 0,             CANT_SELECT, TM_HM,    ITEMMENU_PARTY,   ITEMMENU_NOUSE
 
+; TM51
+	item_attribute  2000, 0,                 0,             CANT_SELECT, TM_HM,    ITEMMENU_PARTY,   ITEMMENU_NOUSE
+
 ; HM01
 	item_attribute     0, 0,                 0, CANT_SELECT | CANT_TOSS, TM_HM,    ITEMMENU_PARTY,   ITEMMENU_NOUSE
 
@@ -755,9 +758,6 @@ Item2Attributes:
 
 ; HM07
 	item_attribute     0, 0,                 0, CANT_SELECT | CANT_TOSS, TM_HM,    ITEMMENU_PARTY,   ITEMMENU_NOUSE
-
-; TERU-SAMA
-	item_attribute $9999, 0,                 0,                       0, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
 ; TERU-SAMA
 	item_attribute $9999, 0,                 0,                       0, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE

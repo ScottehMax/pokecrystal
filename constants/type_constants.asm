@@ -11,9 +11,9 @@ PHYSICAL EQU const_value
 	const BUG
 	const GHOST
 	const STEEL
+	const SHADOW
 
 UNUSED_TYPES EQU const_value
-	const TYPE_10
 	const TYPE_11
 	const TYPE_12
 	const TYPE_13

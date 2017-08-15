@@ -107,7 +107,7 @@ TypeNames: ; 5097b
 	dw Bug
 	dw Ghost
 	dw Steel
-	dw Normal
+	dw Shadow
 	dw Normal
 	dw Normal
 	dw Normal
@@ -145,5 +145,6 @@ Ghost:     db "GHOST@"
 Steel:     db "STEEL@"
 Dragon:    db "DRAGON@"
 Dark:      db "DARK@"
+Shadow:	   db "SHADOW@"
 
 ; 50a28

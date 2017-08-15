@@ -251,7 +251,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_RockSmash
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_BeatUp
-	dw BattleAnim_252
+	dw BattleAnim_ShadowRush
 	dw BattleAnim_253
 	dw BattleAnim_254
 	dw BattleAnim_SweetScent2
@@ -281,7 +281,6 @@ BattleAnimations:: ; c906f
 ; c929b
 
 BattleAnim_0: ; c929b
-BattleAnim_252: ; c929b
 BattleAnim_253: ; c929b
 BattleAnim_254: ; c929b
 BattleAnim_MirrorMove: ; c929b
@@ -5173,3 +5172,32 @@ BattleAnim_ShowMon_1: ; cbcd2
 	anim_wait 1
 	anim_ret
 ; cbcdd
+
+BattleAnim_ShadowRush:
+	anim_bgp $1b
+	;anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_1gfx ANIM_GFX_CHARGE
+	anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_obj ANIM_OBJ_72,   6, 0,  13, 4, $0
+	anim_obj ANIM_OBJ_72,   6, 0,  13, 4, $8
+	anim_obj ANIM_OBJ_72,   6, 0,  13, 4, $10
+	anim_obj ANIM_OBJ_72,   6, 0,  13, 4, $18
+	anim_obj ANIM_OBJ_72,   6, 0,  13, 4, $20
+	anim_obj ANIM_OBJ_72,   6, 0,  13, 4, $28
+	anim_obj ANIM_OBJ_72,   6, 0,  13, 4, $30
+	anim_obj ANIM_OBJ_72,   6, 0,  13, 4, $38
+	anim_wait 64
+	anim_1gfx ANIM_GFX_HIT
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $10
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_wait 3
+	anim_sound 0, 1, SFX_TACKLE
+	anim_obj ANIM_OBJ_00,  16, 0,   6, 0, $0
+	anim_wait 6
+	anim_sound 0, 1, SFX_TACKLE
+	anim_obj ANIM_OBJ_00, -14, 0,   6, 0, $0
+	anim_wait 3
+	anim_call BattleAnim_ShowMon_0
+	anim_ret

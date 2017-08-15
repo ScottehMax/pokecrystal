@@ -243,7 +243,8 @@
 	add_tm FIRE_PUNCH   ; $F0
 	add_tm FURY_CUTTER  ; $F1
 	add_tm NIGHTMARE    ; $F2
-NUM_TMS = const_value - TM01 - 2
+	add_tm SHADOW_RUSH
+NUM_TMS = const_value - TM01 - 1
 
 	add_hm CUT          ; $F3
 	add_hm FLY          ; $F4

@@ -250,7 +250,7 @@
 	dw RockSmashDescription
 	dw WhirlpoolDescription
 	dw BeatUpDescription
-	dw MoveFCDescription
+	dw ShadowRushDescription
 	dw MoveFDDescription
 	dw MoveFEDescription
 	dw MoveFFDescription
@@ -1268,3 +1268,7 @@ BeatUpDescription:
 	db   "Party #MON join"
 	next "in the attack.@"
 ; 2ed44
+
+ShadowRushDescription:
+	db   "A tackle so harsh,"
+	next "it hurts the user.@"

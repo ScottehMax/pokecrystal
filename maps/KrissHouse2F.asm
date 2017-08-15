@@ -99,6 +99,21 @@ KrissHousePC:
 	warp NONE, $0, $0
 	end
 
+ShadowRushTM:
+	itemball TM_SHADOW_RUSH
+
+Suicune:
+	opentext
+	writetext GotSuicuneText
+	givepoke SUICUNE, 75
+	closetext
+	end
+
+GotSuicuneText:
+	text "<PLAYER> got"
+	line "SUICUNE."
+	done
+
 KrisRadioText1:
 	text "PROF.OAK'S #MON"
 	line "TALK! Please tune"
@@ -138,7 +153,9 @@ KrissHouse2F_MapEventHeader:
 	signpost 0, 6, SIGNPOST_IFSET, KrissHousePoster
 
 .PersonEvents:
-	db 4
+	db 6
+	person_event SPRITE_POKE_BALL, 5, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Suicune, 0
+	person_event SPRITE_POKE_BALL, 5, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ShadowRushTM, 0
 	person_event SPRITE_CONSOLE, 2, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
 	person_event SPRITE_DOLL_1, 4, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
 	person_event SPRITE_DOLL_2, 4, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2
