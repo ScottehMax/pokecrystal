@@ -315,6 +315,8 @@ PlacePartyMonTMHMCompatibility: ; 501e0
 	and a
 	ret z
 	ld c, a
+	ld a, 0
+	ld [CurPartyMon], a
 	ld b, 0
 	hlcoord 12, 2
 .loop
@@ -340,6 +342,8 @@ PlacePartyMonTMHMCompatibility: ; 501e0
 	add hl, de
 	pop bc
 	inc b
+	ld a, b
+	ld [CurPartyMon], a
 	dec c
 	jr nz, .loop
 	ret
@@ -347,15 +351,36 @@ PlacePartyMonTMHMCompatibility: ; 501e0
 
 .PlaceAbleNotAble: ; 50215
 	ld a, c
-	and a
+	and a           ; sets the flags
 	jr nz, .able
 	ld de, .string_not_able
 	ret
-
 .able
+
+	; --------- show "learned"
+	push hl
+	ld a, MON_MOVES
+	call GetPartyParamLocation ; offset now in hl
+	ld a, [wPutativeTMHMMove]
+	ld b, a
+	ld c, NUM_MOVES ; 4
+.loop2
+	ld a, [hli]
+	cp b
+	jr z, .learned
+	dec c
+	jr nz, .loop2
+	pop hl
+	; ---------
+
 	ld de, .string_able
 	ret
 ; 50221
+; --------- show "learned"
+.learned
+	pop hl
+	ld de, .string_learned
+	ret
 
 .string_able ; 50221
 	db "ABLE@"
@@ -363,6 +388,9 @@ PlacePartyMonTMHMCompatibility: ; 501e0
 
 .string_not_able ; 50226
 	db "NOT ABLE@"
+
+.string_learned
+	db "LEARNED@"
 ; 5022f
 
 
