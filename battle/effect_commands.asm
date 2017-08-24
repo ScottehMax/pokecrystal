@@ -8550,6 +8550,7 @@ PrintButItFailed: ; 3734e
 	ld hl, ButItFailedText
 	jp StdBattleTextBox
 
+
 ; 37354
 
 
@@ -9738,6 +9739,24 @@ BattleCommand_FutureSight: ; 37d34
 	jp EndMoveEffect
 
 ; 37d94
+
+BattleCommand_ShadowRush:
+	; note: make it so that this only happens with players' mons
+	ld a, [BattleMonShadow]
+	cp a, 0
+	jr z, .not_shadow
+	cp a, 3
+	jr z, .not_shadow
+	ld hl, HyperModeText
+	jp StdBattleTextBox
+
+.not_shadow
+	call AnimateFailedMove
+	call PrintButItFailed
+	jp EndMoveEffect
+
+BattleCommand_CheckShadowRush:
+	ret
 
 
 BattleCommand_ThunderAccuracy: ; 37d94

@@ -180,6 +180,8 @@ endm
 	command supereffectivelooptext  ; ad
 	command startloop               ; ae
 	command curl                    ; af
+	command shadowrush
+	command checkshadowrush
 
 	enum_start -1, -1
 	command endmove

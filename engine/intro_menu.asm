@@ -671,8 +671,15 @@ Continue_DisplayGameTime: ; 5f84
 	jp PrintNum
 ; 5f99
 
+OakSpeech:
+	callba InitClock
+	call NamePlayer
+	ld hl, OakText7
+	call PrintText
+	ret
 
-OakSpeech: ; 0x5f99
+
+OakSpeech2: ; 0x5f99
 	callba InitClock
 	call RotateFourPalettesLeft
 	call ClearTileMap
@@ -824,7 +831,7 @@ NamePlayer: ; 0x6074
 	ret
 
 .Chris:
-	db "CHRIS@@@@@@"
+	db "SCOTT@@@@@@"
 .Kris:
 	db "KRIS@@@@@@@"
 ; 60e9

@@ -422,6 +422,7 @@ BattleAnim_SendOutMon: ; c93d1
 	anim_if_param_equal $0, .Normal
 	anim_if_param_equal $1, .Shiny
 	anim_if_param_equal $2, .Unknown
+	anim_if_param_equal $3, .Shadow
 	anim_1gfx ANIM_GFX_SMOKE
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_bgeffect ANIM_BG_2B, $0, $1, $0
@@ -486,6 +487,22 @@ BattleAnim_SendOutMon: ; c93d1
 	anim_bgeffect ANIM_BG_ENTER_MON, $0, $1, $0
 	anim_wait 32
 	anim_ret
+
+.Shadow:
+	anim_bgp $1b
+	;anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
+	;anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
+	anim_1gfx ANIM_GFX_SPEED
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_1gfx ANIM_GFX_HAZE
+	anim_sound 0, 1, SFX_BUBBLEBEAM
+.loop
+	anim_obj ANIM_OBJ_SMOG, 6, 0, 7, 0, $10
+	anim_wait 8
+	anim_loop 10, .loop
+	anim_wait 8
+	anim_ret
+
 ; c9483
 
 BattleAnim_ReturnMon: ; c9483

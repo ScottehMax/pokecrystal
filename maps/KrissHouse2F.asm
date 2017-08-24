@@ -107,6 +107,25 @@ Suicune:
 	writetext GotSuicuneText
 	givepoke SUICUNE, 75
 	closetext
+	callasm MakeShadow
+	end
+
+MakeShadow:
+	ld a, MON_SHADOW
+	call GetPartyParamLocation
+	ld a, 1
+	ld [hl], a
+	ret
+
+HoOhFight:
+	faceplayer
+	opentext
+	cry HO_OH
+	pause 15
+	writecode VAR_BATTLETYPE, BATTLETYPE_SHINY
+	loadwildmon HO_OH, 60
+	startbattle
+	reloadmapafterbattle
 	end
 
 GotSuicuneText:
@@ -153,7 +172,8 @@ KrissHouse2F_MapEventHeader:
 	signpost 0, 6, SIGNPOST_IFSET, KrissHousePoster
 
 .PersonEvents:
-	db 6
+	db 7
+	person_event SPRITE_HO_OH, 5, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, HoOhFight, 0
 	person_event SPRITE_POKE_BALL, 5, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Suicune, 0
 	person_event SPRITE_POKE_BALL, 5, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ShadowRushTM, 0
 	person_event SPRITE_CONSOLE, 2, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE

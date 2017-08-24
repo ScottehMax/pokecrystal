@@ -2237,3 +2237,26 @@ DefenseCurl:
 	statupmessage
 	statupfailtext
 	endmove
+
+ShadowRush:
+	checkobedience
+	checkshadowrush
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	shadowrush
+	checkhit
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	recoil
+	checkdestinybond
+	buildopponentrage
+	kingsrock
+	endmove

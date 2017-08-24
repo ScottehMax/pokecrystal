@@ -1025,25 +1025,27 @@ PadCoords_de: ; 27092
 	ret
 
 LevelUpHappinessMod: ; 2709e
-	ld a, [CurPartyMon]
-	ld hl, PartyMon1CaughtLocation
-	call GetPartyLocation
-	ld a, [hl]
-	and $7f
-	ld d, a
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	cp d
+;	ld a, [CurPartyMon]
+;	ld hl, PartyMon1CaughtLocation
+;	call GetPartyLocation
+;	ld a, [hl]
+;	and $7f
+;	ld d, a
+;	ld a, [MapGroup]
+;	ld b, a
+;	ld a, [MapNumber]
+;	ld c, a
+;	call GetWorldMapLocation
+;	cp d
 	ld c, HAPPINESS_GAINLEVEL
-	jr nz, .ok
-	ld c, HAPPINESS_GAINLEVELATHOME
-
-.ok
 	callab ChangeHappiness
 	ret
+;	jr nz, .ok
+;	ld c, HAPPINESS_GAINLEVELATHOME
+
+;.ok
+;	callab ChangeHappiness
+;	ret
 
 INCLUDE "trainers/dvs.asm"
 
@@ -3118,8 +3120,8 @@ TextJump_GiveANickname: ; 0x4db44
 SetCaughtData: ; 4db49
 	ld a, [PartyCount]
 	dec a
-	ld hl, PartyMon1CaughtLevel
-	call GetPartyLocation
+	;ld hl, PartyMon1CaughtLevel
+	;call GetPartyLocation
 SetBoxmonOrEggmonCaughtData: ; 4db53
 	ld a, [TimeOfDay]
 	inc a
@@ -3154,30 +3156,31 @@ SetBoxmonOrEggmonCaughtData: ; 4db53
 	ret
 
 SetBoxMonCaughtData: ; 4db83
-	ld a, BANK(sBoxMon1CaughtLevel)
-	call GetSRAMBank
-	ld hl, sBoxMon1CaughtLevel
-	call SetBoxmonOrEggmonCaughtData
-	call CloseSRAM
+	;ld a, BANK(sBoxMon1CaughtLevel)
+	;call GetSRAMBank
+	;ld hl, sBoxMon1CaughtLevel
+	;call SetBoxmonOrEggmonCaughtData
+	;call CloseSRAM
 	ret
 
 SetGiftBoxMonCaughtData: ; 4db92
-	push bc
-	ld a, BANK(sBoxMon1CaughtLevel)
-	call GetSRAMBank
-	ld hl, sBoxMon1CaughtLevel
-	pop bc
-	call SetGiftMonCaughtData
-	call CloseSRAM
-	ret
+    ret
+	;push bc
+	;ld a, BANK(sBoxMon1CaughtLevel)
+	;call GetSRAMBank
+	;ld hl, sBoxMon1CaughtLevel
+	;pop bc
+	;call SetGiftMonCaughtData
+	;call CloseSRAM
+	;ret
 
 SetGiftPartyMonCaughtData: ; 4dba3
 	ld a, [PartyCount]
 	dec a
-	ld hl, PartyMon1CaughtLevel
-	push bc
-	call GetPartyLocation
-	pop bc
+	;ld hl, PartyMon1CaughtLevel
+	;push bc
+	;call GetPartyLocation
+	;pop bc
 SetGiftMonCaughtData: ; 4dbaf
 	xor a
 	ld [hli], a
@@ -3189,8 +3192,8 @@ SetGiftMonCaughtData: ; 4dbaf
 
 SetEggMonCaughtData: ; 4dbb8 (13:5bb8)
 	ld a, [CurPartyMon]
-	ld hl, PartyMon1CaughtLevel
-	call GetPartyLocation
+	;ld hl, PartyMon1CaughtLevel
+	;call GetPartyLocation
 	ld a, [CurPartyLevel]
 	push af
 	ld a, $1
@@ -4781,7 +4784,7 @@ ChrisNameMenuHeader: ; 882b5
 	db 5 ; items
 	db "NEW NAME@"
 MalePlayerNameArray: ; 882c9
-	db "CHRIS@"
+	db "SCOTT@"
 	db "MAT@"
 	db "ALLAN@"
 	db "JON@"

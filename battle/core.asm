@@ -4063,6 +4063,10 @@ InitBattleMon: ; 3da0d
 	ld [BattleMonType1], a
 	ld a, [BaseType2]
 	ld [BattleMonType2], a
+	ld a, MON_SHADOW
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [BattleMonShadow], a
 	ld hl, PartyMonNicknames
 	ld a, [CurBattleMon]
 	call SkipNames
@@ -4238,6 +4242,18 @@ SendOutPlayerMon: ; 3db5f
 	call Call_PlayBattleAnim
 
 .not_shiny
+	ld a, MON_SHADOW
+	call GetPartyParamLocation
+	ld a, [hl]
+	cp 1
+	jr nz, .not_shadow
+	ld a, 3
+	ld [wBattleAnimParam], a
+	ld de, ANIM_SEND_OUT_MON
+	call Call_PlayBattleAnim
+	; -------
+
+.not_shadow
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld b, h

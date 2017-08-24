@@ -1289,3 +1289,16 @@ BattleText_0x8188e: ; 0x8188e
 	line "left today!"
 	done
 ; 0x818ac
+
+ShadowRushText:
+	text "<USER>"
+	line "grows restless..."
+	done
+
+HyperModeText:
+	text "<USER>'s"
+	line "emotions rose to a"
+	cont "fever pitch!"
+	para "It entered Hyper"
+	line "Mode!"
+	prompt

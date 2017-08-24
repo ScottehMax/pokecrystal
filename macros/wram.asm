@@ -20,8 +20,8 @@ box_struct: MACRO
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::
+\1Shadow::         ds 1
 \1CaughtTime::
-\1CaughtLevel::    db
 \1CaughtGender::
 \1CaughtLocation:: db
 \1Level::          db
@@ -98,6 +98,7 @@ battle_struct: MACRO
 \1Type::
 \1Type1::     db
 \1Type2::     db
+\1Shadow::    ds 1
 \1StructEnd::
 ENDM
 
